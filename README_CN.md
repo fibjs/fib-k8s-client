@@ -1,6 +1,6 @@
 # fib-k8s-client
 
-
+[![NPM version](https://img.shields.io/npm/v/fib-k8s-client?style=flat-square)](https://www.npmjs.com/package/fib-k8s-client)
 
 README：[中文](./README_CN.md) | [English](./README.md)
 
