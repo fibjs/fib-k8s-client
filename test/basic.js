@@ -1,5 +1,5 @@
 var test = require("test");
-
+test.setup();
 const Client = require('../').Client;
 const conf = require('./config.json')
 
@@ -72,6 +72,28 @@ describe("basic test", () => {
         assert.equal(r.statusMessage, "OK")
         assert.equal(r.json().kind, "Pod");
         assert.equal(r.json().metadata.name, podConf.metadata.name);
+    });
+
+    it("patch pod from specific namespace", () => {
+        const client = new Client(conf);
+        let patch_json = {
+            "spec": {
+                "containers": [
+                    {
+                        "name": "busybox",
+                        "image": "busybox:1.31",
+                        "ports": [
+                            {
+                                "containerPort": 80
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+        let r = client.api.v1.namespaces(namespaceConf.metadata.name).pods(podConf.metadata.name).patch({ body: patch_json });
+
+        assert.equal(r.json().spec.containers[0].image, "busybox:1.31");
     });
 
     it("delete pod", () => {
