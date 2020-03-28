@@ -1,6 +1,6 @@
 {
   "name": "fib-k8s-client",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Simplified Kubernetes client for FIBJS.",
   "main": "./lib/index.js",
   "repository": "git://github.com/fibjs/fib-k8s-client.git",
